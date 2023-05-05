@@ -13,19 +13,31 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.get('/', function(reg, res) {
-  res.render('index.ejs', {mainContent: homeStartingContent});
+  res.render('index.ejs', {
+    mainContent: 
+    homeStartingContent
+  });
 });
 
 app.get('/about', function(req,res) {
-  res.render('about.ejs', {aboutContent: aboutContent});
+  res.render('about.ejs', {
+    aboutContent: 
+    aboutContent
+  });
 });
 
 app.get('/contact', function(req,res) {
-  res.render('contact.ejs', {contactContent: contactContent});
+  res.render('contact.ejs', {
+    contactContent: 
+    contactContent
+  });
 });
 
 app.get('/compose', function(req,res) {
-  res.render('compose.ejs', {newBlogTitle: newBlogTitle, newBlogPost: newBlogPost});
+  res.render('compose.ejs', {
+    newBlogTitle: newBlogTitle, 
+    newBlogPost: newBlogPost
+  });
 });
 
 let newBlogTitle = [];
