@@ -33,3 +33,17 @@
 	font-size: 12px;
   color: #fff;
 }
+
+.container-input {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
+.button {
+    background-color: tomato;
+    color: #fff;
+    margin-top: 2rem;
+    width: 7rem;
+    border-radius: 5px;
+}
