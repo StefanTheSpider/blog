@@ -14,40 +14,35 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.get('/', function(reg, res) {
   res.render('index.ejs', {
-    mainContent: 
-    homeStartingContent
+    mainContent: homeStartingContent,
+    blogPost: newBlogPost[0] ? newBlogPost[0].title : '',
   });
 });
 
 app.get('/about', function(req,res) {
   res.render('about.ejs', {
-    aboutContent: 
-    aboutContent
+    aboutContent: aboutContent
   });
 });
 
 app.get('/contact', function(req,res) {
   res.render('contact.ejs', {
-    contactContent: 
-    contactContent
+    contactContent: contactContent
   });
 });
 
 app.get('/compose', function(req,res) {
-  res.render('compose.ejs', {
-    newBlogTitle: newBlogTitle, 
-    newBlogPost: newBlogPost
-  });
+  res.render('compose.ejs');
 });
 
-let newBlogTitle = [];
 let newBlogPost = [];
 app.post('/compose', function(req, res) {
-  let title = req.body.blogPostTitle;
-  let post = req.body.blogPostPost
+  const post = {
+    title: req.body.blogPostTitle,
+    content: req.body.blogPostPost
+  }
   newBlogPost.push(post)
-  newBlogTitle.push(title);
-  res.redirect('/compose');
+  res.redirect('/');
 });
 
 app.listen(3000, () => console.log('Server is runing, blog is redy'));

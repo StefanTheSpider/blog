@@ -1,30 +1,18 @@
 <%- include('partials/header') %>
   <h1>Compose</h1>
 
-  <% for( let i=0; i < newBlogTitle.length; i++ ) { %>
-    <h2>
-      <%= newBlogTitle[i] %>
-    </h2>
-    <% } %>
+  <form action="/compose" method="post">
+    <div class="container-input">
+      <label for="blogPostTitle">
+        Titel
+      </label>
+      <input type="text" name="blogPostTitle">
+      <label for="blogPostPost">
+        Post
+      </label>
+      <textarea name="blogPostPost" rows="10" cols=""></textarea>
+      <button class="button" type="submit" name="publish">Publish</button>
+    </div>
+  </form>
 
-      <% for( let i=0; i < newBlogPost.length; i++ ) { %>
-        <p>
-          <%= newBlogPost[i] %>
-        </p>
-        <% } %>
-
-          <form action="/compose" method="post">
-            <div class="container-input">
-              <label for="blogPostTitle">
-                Titel
-              </label>
-              <input type="text" name="blogPostTitle">
-              <label for="blogPostPost">
-                Post
-              </label>
-              <textarea name="blogPostPost"></textarea>
-              <button class="button" type="submit" name="publish" value="newBlogPost">Publish</button>
-            </div>
-          </form>
-
-          <%- include('partials/footer') %>
+  <%- include('partials/footer') %>
