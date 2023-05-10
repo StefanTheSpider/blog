@@ -50,3 +50,13 @@
     width: 7rem;
     border-radius: 5px;
 }
+
+a {
+    color: #1abc9c;
+}
+
+a:hover {
+    color: tomato;
+    font-size: 2rem;
+    text-decoration: none;
+}
