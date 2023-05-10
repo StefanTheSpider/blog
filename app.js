@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const { rmSync } = require('fs');
+const _ = require('lodash');
 
 const app = express();
 
@@ -18,7 +19,6 @@ app.get('/', function(req, res) {
     blogPosts: newBlogPost
   });
 });
-
 
 app.get('/about', function(req,res) {
   res.render('about.ejs', {
@@ -47,10 +47,17 @@ app.post('/compose', function(req, res) {
 });
 
 app.get('/posts/:postName', function(req, res) {
-  let postRequested = req.params.postName;
-  if(postRequested === 'Test') {
-    console.log('Match');
-  }
+  let postRequested = _.lowerCase(req.params.postName);
+  
+  newBlogPost.forEach( post => {
+    const storedTitle = _.lowerCase(post.title);
+    if(postRequested === storedTitle) {
+      res.render('post.ejs', {
+        title: post.title,
+        content: post.content
+      });
+    }
+  });
 });
 
 app.listen(3000, () => console.log('Server is runing, blog is redy'));
